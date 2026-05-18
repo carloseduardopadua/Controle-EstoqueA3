@@ -9,7 +9,7 @@ package visao;
  * @author carlo
  */
 public class FrmMenuPrincipal extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmMenuPrincipal.class.getName());
 
     /**
@@ -28,21 +28,103 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnProduto = new javax.swing.JTextField();
+        btnCategoria = new javax.swing.JTextField();
+        btnMovimentacao = new javax.swing.JTextField();
+        btnRelatorio = new javax.swing.JTextField();
+        btnSair = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnProduto.setText("PRODUTOS");
+        btnProduto.addActionListener(this::btnProdutoActionPerformed);
+
+        btnCategoria.setText("CATEGORIAS");
+        btnCategoria.addActionListener(this::btnCategoriaActionPerformed);
+
+        btnMovimentacao.setText("MOVIMENTAÇÃO");
+        btnMovimentacao.addActionListener(this::btnMovimentacaoActionPerformed);
+
+        btnRelatorio.setText("RELATÓRIOS");
+        btnRelatorio.addActionListener(this::btnRelatorioActionPerformed);
+
+        btnSair.setText("SAIR");
+        btnSair.addActionListener(this::btnSairActionPerformed);
+
+        jLabel1.setText("SISTEMA DE CONTROLE DE ESTOQUE");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(152, 152, 152)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnProduto)
+                            .addComponent(btnMovimentacao)
+                            .addComponent(btnCategoria)
+                            .addComponent(btnRelatorio))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 105, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(94, 94, 94))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(jLabel1)
+                .addGap(24, 24, 24)
+                .addComponent(btnProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(btnMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutoActionPerformed
+        CadastroProduto tela = new CadastroProduto();
+
+        tela.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProdutoActionPerformed
+
+    private void btnCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoriaActionPerformed
+        CadastroCategoria tela = new CadastroCategoria();
+
+        tela.setVisible(true);    // TODO add your handling code here:
+    }//GEN-LAST:event_btnCategoriaActionPerformed
+
+    private void btnMovimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovimentacaoActionPerformed
+        TelaMovimentacao tela = new TelaMovimentacao();
+
+        tela.setVisible(true); // TODO add your handling code here:
+    }//GEN-LAST:event_btnMovimentacaoActionPerformed
+
+    private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
+        TelaRelatorios tela = new TelaRelatorios();
+
+        tela.setVisible(true); // TODO add your handling code here:
+    }//GEN-LAST:event_btnRelatorioActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+      System.exit(0);  // TODO add your handling code here:
+    }//GEN-LAST:event_btnSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +152,11 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField btnCategoria;
+    private javax.swing.JTextField btnMovimentacao;
+    private javax.swing.JTextField btnProduto;
+    private javax.swing.JTextField btnRelatorio;
+    private javax.swing.JTextField btnSair;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
