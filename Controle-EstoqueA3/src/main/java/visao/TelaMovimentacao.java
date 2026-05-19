@@ -4,6 +4,8 @@
  */
 package visao;
 
+import java.awt.HeadlessException;
+
 /**
  *
  * @author pepes
@@ -17,6 +19,8 @@ public class TelaMovimentacao extends javax.swing.JFrame {
      */
     public TelaMovimentacao() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        carregarProdutosNoComboBox();
     }
 
     /**
@@ -28,21 +32,162 @@ public class TelaMovimentacao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        cbxProduto = new javax.swing.JComboBox<>();
+        cbxTipo = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtQuantidade = new javax.swing.JTextPane();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        btnSalvar = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        cbxProduto.setName("cbxProduto"); // NOI18N
+        cbxProduto.addActionListener(this::cbxProdutoActionPerformed);
+
+        cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entrada", "Saída" }));
+        cbxTipo.addActionListener(this::cbxTipoActionPerformed);
+
+        jLabel1.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        jLabel1.setText("Digite a Quantidade:");
+
+        jScrollPane4.setViewportView(txtQuantidade);
+
+        jLabel2.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        jLabel2.setText("Selecione o tipo de Produto:");
+
+        jLabel3.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        jLabel3.setText("Selecione o tipo de transação:");
+
+        btnSalvar.setText("SALVAR");
+        btnSalvar.addActionListener(this::btnSalvarActionPerformed);
+
+        btnVoltar.setText("VOLTAR");
+        btnVoltar.addActionListener(this::btnVoltarActionPerformed);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel4.setText("Movimentações - Entrada/Saída");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(94, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(170, 170, 170)
+                        .addComponent(btnVoltar)))
+                .addGap(133, 133, 133))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(cbxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(cbxProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cbxProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxProdutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxProdutoActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+// 1. Valida se o usuário escolheu uma transação válida
+    if (cbxTipo.getSelectedIndex() == 0 || cbxTipo.getSelectedItem().toString().contains("Selecione")) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Por favor, selecione o tipo de transação (Entrada ou Saída)!");
+        return;
+    }
+    
+    // 2. Valida se o campo quantidade está vazio
+    if (txtQuantidade.getText().trim().isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Por favor, digite a quantidade!");
+        return;
+    }
+    
+    // 3. Valida se a quantidade digitada é um número inteiro válido e positivo
+    int quantidade;
+    try {
+        quantidade = Integer.parseInt(txtQuantidade.getText().trim());
+        if (quantidade <= 0) {
+            javax.swing.JOptionPane.showMessageDialog(this, "A quantidade deve ser um número maior que zero!");
+            return;
+        }
+    } catch (NumberFormatException e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Digite apenas números inteiros no campo de quantidade!");
+        return;
+    }
+    
+    // 4. Pega os textos que estão selecionados na tela
+    String tipoTransacao = cbxTipo.getSelectedItem().toString();
+    String nomeProduto = cbxProduto.getSelectedItem().toString();
+    
+    // 5. Envia para o banco de dados processar
+    try {
+        dao.ProdutoDAO dao = new dao.ProdutoDAO();
+        
+        // Esse método vai fazer o INSERT do histórico e atualizar o estoque físico do produto
+        boolean sucesso = dao.registrarMovimentacao(nomeProduto, tipoTransacao, quantidade);
+        
+        if (sucesso) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Movimentação registrada com sucesso!");
+            txtQuantidade.setText("");      // Limpa a caixinha de texto
+            cbxTipo.setSelectedIndex(0);    // Volta o combo para a mensagem inicial
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Erro ao registrar. Verifique se há estoque disponível para saída!");
+        }
+    } catch (HeadlessException e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Erro de conexão com o banco: " + e.getMessage());
+    }        // TODO add your handling code here:
+    if (cbxProduto.getSelectedIndex() == 0) {
+    javax.swing.JOptionPane.showMessageDialog(this, "Selecione um produto!");
+}
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void cbxTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxTipoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +215,34 @@ public class TelaMovimentacao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSalvar;
+    private javax.swing.JButton btnVoltar;
+    private javax.swing.JComboBox<String> cbxProduto;
+    private javax.swing.JComboBox<String> cbxTipo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTextPane txtQuantidade;
     // End of variables declaration//GEN-END:variables
+ private void carregarProdutosNoComboBox() {
+        try {
+            dao.ProdutoDAO daoObj = new dao.ProdutoDAO();
+            
+            // Busca a lista de produtos cadastrados no banco de dados
+            java.util.List<modelo.Produto> lista = daoObj.listar(); 
+            
+            cbxProduto.removeAllItems(); // Limpa os itens fixos ("Item 1", "Item 2")
+            cbxProduto.addItem("-- Selecione o Produto --"); // Adiciona o texto de instrução
+            
+            // Preenche o ComboBox com os nomes vindos da tabela do banco
+            for (modelo.Produto p : lista) {
+                cbxProduto.addItem(p.getNome()); 
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao carregar produtos no Combo: " + e.getMessage());
+        }
+    }
+
 }

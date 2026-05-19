@@ -17,6 +17,7 @@ public class CadastroCategoria extends javax.swing.JFrame {
      */
     public CadastroCategoria() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

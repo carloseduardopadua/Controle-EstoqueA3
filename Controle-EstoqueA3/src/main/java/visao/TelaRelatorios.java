@@ -4,6 +4,11 @@
  */
 package visao;
 
+import dao.ProdutoDAO;
+import java.util.List;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author pepes
@@ -16,8 +21,9 @@ public class TelaRelatorios extends javax.swing.JFrame {
      * Creates new form TelaRelatorio
      */
     public TelaRelatorios() {
-        initComponents();
-    }
+    initComponents();
+    this.setLocationRelativeTo(null); 
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,21 +34,214 @@ public class TelaRelatorios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btnListasdePreco = new javax.swing.JButton();
+        btnBalancoEstoque = new javax.swing.JButton();
+        btnEstoquebaixo = new javax.swing.JButton();
+        btnProdutosporCategoria = new javax.swing.JButton();
+        btnMaiorMovimentacao = new javax.swing.JButton();
+        btnAtualizar = new javax.swing.JButton();
+        btnLimpar = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblRelatorios = new javax.swing.JTable();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        setName("tblRelatorios"); // NOI18N
+
+        btnListasdePreco.setText("Listas de Preço");
+        btnListasdePreco.addActionListener(this::btnListasdePrecoActionPerformed);
+
+        btnBalancoEstoque.setText("Balanço Estoque");
+        btnBalancoEstoque.addActionListener(this::btnBalancoEstoqueActionPerformed);
+
+        btnEstoquebaixo.setText("Estoque baixo");
+        btnEstoquebaixo.addActionListener(this::btnEstoquebaixoActionPerformed);
+
+        btnProdutosporCategoria.setText("Produtos por Categoria");
+        btnProdutosporCategoria.addActionListener(this::btnProdutosporCategoriaActionPerformed);
+
+        btnMaiorMovimentacao.setText("Maior Movimentação");
+        btnMaiorMovimentacao.addActionListener(this::btnMaiorMovimentacaoActionPerformed);
+
+        btnAtualizar.setText("Atualizar");
+        btnAtualizar.addActionListener(this::btnAtualizarActionPerformed);
+
+        btnLimpar.setText("Limpar");
+        btnLimpar.addActionListener(this::btnLimparActionPerformed);
+
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(this::btnVoltarActionPerformed);
+
+        tblRelatorios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane3.setViewportView(tblRelatorios);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(123, 123, 123)
+                .addComponent(btnMaiorMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAtualizar)
+                        .addGap(63, 63, 63)
+                        .addComponent(btnLimpar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVoltar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnListasdePreco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnProdutosporCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnEstoquebaixo, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBalancoEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(25, 25, 25))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnListasdePreco)
+                    .addComponent(btnBalancoEstoque))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEstoquebaixo)
+                    .addComponent(btnProdutosporCategoria))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnMaiorMovimentacao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAtualizar)
+                    .addComponent(btnLimpar)
+                    .addComponent(btnVoltar))
+                .addGap(30, 30, 30))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnListasdePrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListasdePrecoActionPerformed
+ProdutoDAO dao = new ProdutoDAO();
+    List<Vector<Object>> dados = dao.obterListaDePrecos();
+    
+    Vector<String> colunas = new Vector<>();
+    colunas.add("Produto");
+    colunas.add("Preço Unitário");
+    colunas.add("Unidade");
+    colunas.add("Categoria");
+    
+    DefaultTableModel modeloTabela = new DefaultTableModel((Vector<? extends Vector>) dados, colunas);
+    tblRelatorios.setModel(modeloTabela);// TODO add your handling code here:
+    }//GEN-LAST:event_btnListasdePrecoActionPerformed
+
+    private void btnBalancoEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBalancoEstoqueActionPerformed
+   ProdutoDAO dao = new ProdutoDAO();
+    List<Vector<Object>> dados = dao.obterBalancoFisicoFinanceiro();
+    
+    Vector<String> colunas = new Vector<>();
+    colunas.add("Produto");
+    colunas.add("Qtd em Estoque");
+    colunas.add("Preço Unitário");
+    colunas.add("Valor Total (R$)");
+    
+    DefaultTableModel modeloTabela = new DefaultTableModel((Vector<? extends Vector>) dados, colunas);
+    tblRelatorios.setModel(modeloTabela); // TODO add your handling code here:
+    }//GEN-LAST:event_btnBalancoEstoqueActionPerformed
+
+    private void btnProdutosporCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosporCategoriaActionPerformed
+ProdutoDAO dao = new ProdutoDAO();
+    List<Vector<Object>> dados = dao.obterQtdProdutosPorCategoria();
+    
+    Vector<String> colunas = new Vector<>();
+    colunas.add("Nome da Categoria");
+    colunas.add("Quantidade de Produtos");
+    
+    DefaultTableModel modeloTabela = new DefaultTableModel((Vector<? extends Vector>) dados, colunas);
+    tblRelatorios.setModel(modeloTabela);
+    }//GEN-LAST:event_btnProdutosporCategoriaActionPerformed
+
+    private void btnMaiorMovimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaiorMovimentacaoActionPerformed
+     ProdutoDAO dao = new ProdutoDAO(); 
+    List<Vector<Object>> dados = dao.obterMaioresMovimentacoes();
+    
+    Vector<String> colunas = new Vector<>();
+    colunas.add("Operação");
+    colunas.add("Produto");
+    colunas.add("Quantidade Total Movimentada");
+    
+    DefaultTableModel modeloTabela = new DefaultTableModel((Vector<? extends Vector>) dados, colunas);
+    tblRelatorios.setModel(modeloTabela);  // TODO add your handling code here:
+    }//GEN-LAST:event_btnMaiorMovimentacaoActionPerformed
+
+    private void btnEstoquebaixoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstoquebaixoActionPerformed
+  ProdutoDAO dao = new ProdutoDAO();
+    List<Vector<Object>> dados = dao.obterProdutosAbaixoMinimo();
+    
+    Vector<String> colunas = new Vector<>();
+    colunas.add("Produto");
+    colunas.add("Qtd Mínima");
+    colunas.add("Estoque Atual");
+    
+    DefaultTableModel modeloTabela = new DefaultTableModel((Vector<? extends Vector>) dados, colunas);
+    tblRelatorios.setModel(modeloTabela);   // TODO add your handling code here:
+    }//GEN-LAST:event_btnEstoquebaixoActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+    tblRelatorios.setModel(new DefaultTableModel());  // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
+       ProdutoDAO dao = new ProdutoDAO();
+    List<Vector<Object>> dados = dao.obterListaDePrecos();
+    
+    Vector<String> colunas = new Vector<>();
+    colunas.add("Produto");
+    colunas.add("Preço Unitário");
+    colunas.add("Unidade");
+    colunas.add("Categoria");
+    
+    DefaultTableModel modeloTabela = new DefaultTableModel((Vector<? extends Vector>) dados, colunas);
+    tblRelatorios.setModel(modeloTabela);// TODO add your handling code here:
+    }//GEN-LAST:event_btnAtualizarActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+   this.dispose();  // TODO add your handling code here:
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +269,17 @@ public class TelaRelatorios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtualizar;
+    private javax.swing.JButton btnBalancoEstoque;
+    private javax.swing.JButton btnEstoquebaixo;
+    private javax.swing.JButton btnLimpar;
+    private javax.swing.JButton btnListasdePreco;
+    private javax.swing.JButton btnMaiorMovimentacao;
+    private javax.swing.JButton btnProdutosporCategoria;
+    private javax.swing.JButton btnVoltar;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblRelatorios;
     // End of variables declaration//GEN-END:variables
 }
