@@ -4,12 +4,14 @@
  */
 package visao;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author pepes
  */
 public class CadastroCategoria extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CadastroCategoria.class.getName());
 
     /**
@@ -29,21 +31,225 @@ public class CadastroCategoria extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
+        cbTamanho = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        cbEmbalagem = new javax.swing.JComboBox<>();
+        btnSalvar = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
+        btnLimpar = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel1.setText("Cadastro de Categoria");
+
+        jLabel2.setText("NOME:");
+
+        txtNome.addActionListener(this::txtNomeActionPerformed);
+
+        cbTamanho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pequeno", "Médio", "Grande" }));
+        cbTamanho.addActionListener(this::cbTamanhoActionPerformed);
+
+        jLabel3.setText("TAMANHO:");
+
+        jLabel4.setText("EMBALAGEM:");
+
+        cbEmbalagem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lata", "Plástico", "Vidro" }));
+        cbEmbalagem.addActionListener(this::cbEmbalagemActionPerformed);
+
+        btnSalvar.setText("SALVAR");
+        btnSalvar.addActionListener(this::btnSalvarActionPerformed);
+
+        btnAlterar.setText("ALTERAR");
+        btnAlterar.addActionListener(this::btnAlterarActionPerformed);
+
+        btnExcluir.setText("EXCLUIR");
+        btnExcluir.addActionListener(this::btnExcluirActionPerformed);
+
+        btnLimpar.setText("LIMPAR");
+        btnLimpar.addActionListener(this::btnLimparActionPerformed);
+
+        btnVoltar.setText("VOLTAR");
+        btnVoltar.addActionListener(this::btnVoltarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(204, 204, 204)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(92, 92, 92)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(30, 30, 30))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNome)
+                            .addComponent(cbTamanho, 0, 151, Short.MAX_VALUE)
+                            .addComponent(cbEmbalagem, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(btnSalvar)
+                        .addGap(31, 31, 31)
+                        .addComponent(btnAlterar)
+                        .addGap(28, 28, 28)
+                        .addComponent(btnExcluir)
+                        .addGap(34, 34, 34)
+                        .addComponent(btnLimpar)
+                        .addGap(39, 39, 39)
+                        .addComponent(btnVoltar)))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(cbTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbEmbalagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar)
+                    .addComponent(btnAlterar)
+                    .addComponent(btnExcluir)
+                    .addComponent(btnLimpar)
+                    .addComponent(btnVoltar))
+                .addGap(55, 55, 55))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cbTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTamanhoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbTamanhoActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        String nome;
+        String tamanho;
+        String embalagem;
+
+        nome = txtNome.getText();
+
+        tamanho = cbTamanho.getSelectedItem().toString();
+
+        embalagem = cbEmbalagem.getSelectedItem().toString();
+
+        JOptionPane.showMessageDialog(this,
+                "Categoria salva com sucesso!"
+                + "\n\nNome: " + nome
+                + "\nTamanho: " + tamanho
+                + "\nEmbalagem: " + embalagem);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+
+        String nome;
+        String tamanho;
+        String embalagem;
+
+        nome = txtNome.getText();
+
+        tamanho = cbTamanho.getSelectedItem().toString();
+
+        embalagem = cbEmbalagem.getSelectedItem().toString();
+
+        JOptionPane.showMessageDialog(this,
+                "Categoria alterada com sucesso!"
+                + "\n\nNome: " + nome
+                + "\nTamanho: " + tamanho
+                + "\nEmbalagem: " + embalagem);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void cbEmbalagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEmbalagemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbEmbalagemActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        txtNome.setText("");
+
+        cbTamanho.setSelectedIndex(0);
+
+        cbEmbalagem.setSelectedIndex(0);
+
+        txtNome.requestFocus();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        int resposta;
+
+        resposta = JOptionPane.showConfirmDialog(
+                this,
+                "Deseja realmente excluir esta categoria?",
+                "Confirmação",
+                JOptionPane.YES_NO_OPTION
+        );
+
+        if (resposta == JOptionPane.YES_OPTION) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Categoria excluída com sucesso!"
+            );
+
+            txtNome.setText("");
+
+            cbTamanho.setSelectedIndex(0);
+
+            cbEmbalagem.setSelectedIndex(0);
+
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -71,5 +277,19 @@ public class CadastroCategoria extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnLimpar;
+    private javax.swing.JButton btnSalvar;
+    private javax.swing.JButton btnVoltar;
+    private javax.swing.JComboBox<String> cbEmbalagem;
+    private javax.swing.JComboBox<String> cbTamanho;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }
