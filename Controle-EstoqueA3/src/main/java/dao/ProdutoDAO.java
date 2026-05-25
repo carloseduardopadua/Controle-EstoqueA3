@@ -288,4 +288,63 @@ public class ProdutoDAO {
     public List<Produto> listar() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+    public void alterarProduto(Produto produto){
+
+    String sql = """
+                 UPDATE produto
+                 SET
+                 nome = ?,
+                 preco_unitario = ?,
+                 unidade = ?,
+                 quantidade_estoque = ?,
+                 quantidade_minima = ?,
+                 quantidade_maxima = ?,
+                 categoria = ?
+                 WHERE id = ?
+                 """;
+
+    try {
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+
+        ps.setString(1, produto.getNome());
+        ps.setDouble(2, produto.getPrecoUnitario());
+        ps.setString(3, produto.getUnidade());
+        ps.setInt(4, produto.getQuantidadeEstoque());
+        ps.setInt(5, produto.getQuantidadeMinima());
+        ps.setInt(6, produto.getQuantidadeMaxima());
+        ps.setString(7, produto.getCategoria());
+
+        ps.setInt(8, produto.getId());
+
+        ps.executeUpdate();
+
+        JOptionPane.showMessageDialog(null, "Produto alterado!");
+
+    } catch (Exception e) {
+
+        JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage());
+
+    }
+}
+    public void excluirProduto(int id){
+
+    String sql = "DELETE FROM produto WHERE id = ?";
+
+    try {
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+
+        ps.setInt(1, id);
+
+        ps.executeUpdate();
+
+        JOptionPane.showMessageDialog(null, "Produto excluído!");
+
+    } catch (Exception e) {
+
+        JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage());
+
+    }
+}
 }

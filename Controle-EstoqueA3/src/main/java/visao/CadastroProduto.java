@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package visao;
-
+import dao.ProdutoDAO;
+import modelo.Produto;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author carlo
@@ -17,9 +20,29 @@ public class CadastroProduto extends javax.swing.JFrame {
      */
     public CadastroProduto() {
         initComponents();
+          listarProdutos();
         this.setLocationRelativeTo(null);
     }
+public void listarProdutos(){
 
+    ProdutoDAO dao = new ProdutoDAO();
+
+    DefaultTableModel modelo =
+    (DefaultTableModel) tblProdutos.getModel();
+
+    modelo.setNumRows(0);
+
+    for(Produto p : dao.listarProdutos()){
+
+        modelo.addRow(new Object[]{
+            p.getId(),
+            p.getNome(),
+            p.getPrecoUnitario(),
+            p.getQuantidadeEstoque(),
+            p.getCategoria()
+        });
+    }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -232,15 +255,51 @@ public class CadastroProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIdActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
+       Produto p = new Produto();
+
+        p.setNome(txtNome.getText());
+        p.setPrecoUnitario(Double.parseDouble(txtPreco.getText()));
+        p.setQuantidadeEstoque(Integer.parseInt(txtQuantidade.getText()));
+        p.setQuantidadeMaxima(Integer.parseInt(txtQtdMaxima.getText()));
+        p.setQuantidadeMinima(Integer.parseInt(txtqtdMinima.getText()));
+        p.setUnidade(txtUnidade.getText());
+        p.setCategoria(txtCategoria.getText());
+
+ProdutoDAO dao = new ProdutoDAO();
+dao.cadastrarProduto(p);
+
+JOptionPane.showMessageDialog(null, "Produto salvo!");
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // TODO add your handling code here:
+       Produto p = new Produto();
+
+        p.setId(Integer.parseInt(txtId.getText()));
+        p.setNome(txtNome.getText());
+        p.setPrecoUnitario(Double.parseDouble(txtPreco.getText()));
+        p.setQuantidadeEstoque(Integer.parseInt(txtQuantidade.getText()));
+        p.setQuantidadeMaxima(Integer.parseInt(txtQtdMaxima.getText()));
+        p.setQuantidadeMinima(Integer.parseInt(txtqtdMinima.getText()));
+        p.setUnidade(txtUnidade.getText());
+        p.setCategoria(txtCategoria.getText());
+
+    ProdutoDAO dao = new ProdutoDAO();
+
+    dao.alterarProduto(p);
+
+    listarProdutos();
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        // TODO add your handling code here:
+        int id = Integer.parseInt(txtId.getText());
+
+    ProdutoDAO dao = new ProdutoDAO();
+
+    dao.excluirProduto(id);
+
+listarProdutos();
+
+btnLimparActionPerformed(evt);
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
@@ -272,13 +331,30 @@ public class CadastroProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCategoriaActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        // TODO add your handling code here:
+        txtId.setText("");
+         txtNome.setText("");
+        txtPreco.setText("");
+        txtQuantidade.setText("");
+        txtQtdMaxima.setText("");
+        txtqtdMinima.setText("");
+        txtUnidade.setText("");
+        txtCategoria.setText("");
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
 this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_btnVoltarActionPerformed
+private void tblProdutosMouseClicked(java.awt.event.MouseEvent evt) {
 
+    txtId.setText(tblProdutos.getValueAt(tblProdutos.getSelectedRow(), 0).toString());
+
+    txtNome.setText(tblProdutos.getValueAt(tblProdutos.getSelectedRow(), 1).toString());
+
+    txtPreco.setText(tblProdutos.getValueAt(tblProdutos.getSelectedRow(), 2).toString());
+
+    txtQuantidade.setText(tblProdutos.getValueAt(tblProdutos.getSelectedRow(), 3).toString());
+
+}
     /**
      * @param args the command line arguments
      */
