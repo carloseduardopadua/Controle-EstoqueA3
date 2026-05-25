@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package visao;
-
+import dao.CategoriaDAO;
+import modelo.Categoria;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,7 +13,25 @@ import javax.swing.JOptionPane;
  * @author pepes
  */
 public class CadastroCategoria extends javax.swing.JFrame {
+public void listarCategorias(){
 
+    CategoriaDAO dao = new CategoriaDAO();
+
+    DefaultTableModel modelo =
+    (DefaultTableModel) tblCategoria.getModel();
+
+    modelo.setNumRows(0);
+
+    for(Categoria c : dao.listarCategorias()){
+
+        modelo.addRow(new Object[]{
+            c.getId(),
+            c.getNome(),
+            c.getTamanho(),
+            c.getEmbalagem()
+        });
+    }
+}
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CadastroCategoria.class.getName());
 
     /**
@@ -19,6 +39,7 @@ public class CadastroCategoria extends javax.swing.JFrame {
      */
     public CadastroCategoria() {
         initComponents();
+        listarCategorias();
         this.setLocationRelativeTo(null);
     }
 
@@ -336,21 +357,7 @@ public class CadastroCategoria extends javax.swing.JFrame {
     }//GEN-LAST:event_cbTamanhoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        String nome;
-        String tamanho;
-        String embalagem;
-
-        nome = txtNome.getText();
-
-        tamanho = cbTamanho.getSelectedItem().toString();
-
-        embalagem = cbEmbalagem.getSelectedItem().toString();
-
-        JOptionPane.showMessageDialog(this,
-                "Categoria salva com sucesso!"
-                + "\n\nNome: " + nome
-                + "\nTamanho: " + tamanho
-                + "\nEmbalagem: " + embalagem);        // TODO add your handling code here:
+         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
