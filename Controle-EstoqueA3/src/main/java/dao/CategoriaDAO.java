@@ -1,84 +1,93 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dao;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import modelo.Categoria;
 import util.Conexao;
 
-/**
- *
- * @author RTX4060
- */
 public class CategoriaDAO {
-    Connection conn;
 
-    public CategoriaDAO() {
-        conn = Conexao.conectar();
-    }
-
-    public void cadastrarCategoria(Categoria c){
-
-        String sql = """
-                     INSERT INTO categoria
-                     (nome, tamanho, embalagem)
-                     VALUES (?, ?, ?)
-                     """;
-
-        try {
-
-            PreparedStatement ps = conn.prepareStatement(sql);
-
-            ps.setString(1, c.getNome());
-            ps.setString(2, c.getTamanho());
-            ps.setString(3, c.getEmbalagem());
-
-            ps.execute();
-            ps.close();
-
-        } catch (Exception e) {
-
-            System.out.println("Erro: " + e.getMessage());
-
-        }
-    }
-
-    public ArrayList<Categoria> listarCategorias(){
-
-        ArrayList<Categoria> lista = new ArrayList<>();
-
-        String sql = "SELECT * FROM categoria";
-
-        try {
-
-            PreparedStatement ps = conn.prepareStatement(sql);
-
-            ResultSet rs = ps.executeQuery();
-
-            while(rs.next()){
-
-                Categoria c = new Categoria();
-
-                c.setId(rs.getInt("id"));
-                c.setNome(rs.getString("nome"));
-                c.setTamanho(rs.getString("tamanho"));
-                c.setEmbalagem(rs.getString("embalagem"));
-
-                lista.add(c);
-
+    public void inserir(Categoria categoria) throws SQLException {
+        String sql = "INSERT INTO categoria (nome, tamanho, embalagem) VALUES (?, ?, ?)";
+        Connection conn = Conexao.conectar();
+        if (conn != null) {
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setString(1, categoria.getNome());
+                stmt.setString(2, categoria.getTamanho());
+                stmt.setString(3, categoria.getEmbalagem());
+                stmt.executeUpdate();
+            } finally {
+                conn.close();
             }
-
-        } catch (Exception e) {
-
-            System.out.println("Erro: " + e.getMessage());
-
         }
+    }
 
+    public void alterar(Categoria categoria) throws SQLException {
+        String sql = "UPDATE categoria SET nome = ?, tamanho = ?, embalagem = ? WHERE id = ?";
+        Connection conn = Conexao.conectar();
+        if (conn != null) {
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setString(1, categoria.getNome());
+                stmt.setString(2, categoria.getTamanho());
+                stmt.setString(3, categoria.getEmbalagem());
+                stmt.setInt(4, categoria.getId());
+                stmt.executeUpdate();
+            } finally {
+                conn.close();
+            }
+        }
+    }
+
+    public void excluir(int id) throws SQLException {
+        String sql = "DELETE FROM categoria WHERE id = ?";
+        Connection conn = Conexao.conectar();
+        if (conn != null) {
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setInt(1, id);
+                stmt.executeUpdate();
+            } finally {
+                conn.close();
+            }
+        }
+    }
+
+    public List<Categoria> listarTodas() throws SQLException {
+        String sql = "SELECT * FROM categoria ORDER BY nome";
+        List<Categoria> lista = new ArrayList<>();
+        Connection conn = Conexao.conectar();
+        if (conn != null) {
+            try (PreparedStatement stmt = conn.prepareStatement(sql); 
+                 ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Categoria c = new Categoria();
+                    c.setId(rs.getInt("id"));
+                    c.setNome(rs.getString("nome"));
+                    c.setTamanho(rs.getString("tamanho"));
+                    c.setEmbalagem(rs.getString("embalagem"));
+                    lista.add(c);
+                }
+            } finally {
+                conn.close();
+            }
+        }
         return lista;
     }
-}
 
+    /**
+     * Método gerado automaticamente pela interface. 
+     * Agora ele reaproveita o 'listarTodas()' para retornar os dados corretamente.
+     * @return 
+     */
+    public Iterable<Categoria> listarCategorias() {
+        try {
+            return listarTodas();
+        } catch (SQLException e) {
+            System.out.println("Erro ao listar categorias na interface: " + e.getMessage());
+            return new ArrayList<>(); // Retorna uma lista vazia em caso de erro para não travar a tela
+        }
+    }
+}

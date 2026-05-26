@@ -15,13 +15,13 @@ import java.sql.DriverManager;
 public class Conexao {
 
     /** URL de conexão com o banco de dados MySQL. */
-    private static final String URL = "jdbc:mysql://localhost:3306/controle_estoque";
+    private static final String URL = "jdbc:mysql://localhost:3306/controleestoque";
 
     /** Usuário do banco de dados. */
     private static final String USUARIO = "root";
 
     /** Senha do banco de dados. */
-    private static final String SENHA = "";
+    private static final String SENHA = "Lucimeire131101";
 
     /**
      * Estabelece e retorna uma conexão com o banco de dados.
