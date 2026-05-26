@@ -82,12 +82,17 @@ public class CategoriaDAO {
      * Agora ele reaproveita o 'listarTodas()' para retornar os dados corretamente.
      * @return 
      */
-    public Iterable<Categoria> listarCategorias() {
+   public Iterable<Categoria> listarCategorias() {
         try {
             return listarTodas();
         } catch (SQLException e) {
+            // ISSO VAI MOSTRAR O ERRO REAL EM UMA JANELA NA TELA
+            javax.swing.JOptionPane.showMessageDialog(null, 
+                "Erro de Conexão/SQL: " + e.getMessage(), 
+                "Erro Crítico", 
+                javax.swing.JOptionPane.ERROR_MESSAGE);
+            
             System.out.println("Erro ao listar categorias na interface: " + e.getMessage());
-            return new ArrayList<>(); // Retorna uma lista vazia em caso de erro para não travar a tela
+            return new ArrayList<>(); 
         }
-    }
-}
+   }}
