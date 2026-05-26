@@ -37,28 +37,98 @@
 
 ## Requisitos funcionais
 
-### 1. Categoria
-- **1.1** — O sistema deve permitir cadastrar, editar, consultar e excluir categorias.
-- **1.2** — Cada categoria deve ter nome, tamanho (Pequeno, Médio ou Grande) e embalagem (Lata, Vidro ou Plástico).
+RF001 — Cadastro de Categorias
 
-### 2. Produto
-- **2.1** — O sistema deve permitir cadastrar, editar, consultar e excluir produtos.
-- **2.2** — Cada produto deve estar vinculado a uma categoria.
-- **2.3** — O sistema deve permitir reajustar o preço de todos os produtos por um percentual informado.
+O sistema deve permitir cadastrar categorias.
 
-### 3. Movimentação
-- **3.1** — O sistema deve registrar entradas e saídas de produtos com data e quantidade.
-- **3.2** — O sistema deve atualizar o saldo do produto automaticamente após cada movimentação.
-- **3.3** — O sistema deve exibir um aviso quando a quantidade ficar abaixo do mínimo após uma saída.
-- **3.4** — O sistema deve exibir um aviso quando a quantidade ultrapassar o máximo após uma entrada.
+RF002 — Edição de Categorias
+
+O sistema deve permitir editar categorias cadastradas.
+
+RF003 — Consulta de Categorias
+
+O sistema deve permitir consultar categorias cadastradas.
+
+RF004 — Exclusão de Categorias
+
+O sistema deve permitir excluir categorias cadastradas.
+
+RF005 — Dados da Categoria
+
+Cada categoria deve possuir:
+
+nome;
+tamanho (Pequeno, Médio ou Grande);
+embalagem (Lata, Vidro ou Plástico).
+
+RF006 — Cadastro de Produtos
+
+O sistema deve permitir cadastrar produtos.
+
+RF007 — Edição de Produtos
+
+O sistema deve permitir editar produtos cadastrados.
+
+RF008 — Consulta de Produtos
+
+O sistema deve permitir consultar produtos cadastrados.
+
+RF009 — Exclusão de Produtos
+
+O sistema deve permitir excluir produtos cadastrados.
+
+RF010 — Vinculação de Produto
+
+Cada produto deve estar vinculado a uma categoria.
+
+RF011 — Reajuste de Preço
+
+O sistema deve permitir reajustar o preço de todos os produtos com base em um percentual informado.
+
+RF012 — Registro de Movimentações
+
+O sistema deve registrar entradas e saídas de produtos contendo data e quantidade.
+
+RF013 — Atualização Automática de Saldo
+
+O sistema deve atualizar automaticamente o saldo do produto após cada movimentação.
+
+RF014 — Aviso de Quantidade Mínima
+
+O sistema deve exibir um aviso quando a quantidade do produto ficar abaixo do mínimo após uma saída.
+
+RF015 — Aviso de Quantidade Máxima
+
+O sistema deve exibir um aviso quando a quantidade do produto ultrapassar o máximo após uma entrada.
 
 ---
 
 ## 4. Requisitos não funcionais
 
-- **4.1** — O sistema deve ser desenvolvido em Java.
-- **4.2** — O banco de dados utilizado deve ser o MySQL.
-- **4.3** — A interface gráfica deve ser desenvolvida com Java Swing.
-- **4.4** — O sistema deve utilizar o padrão de projeto DAO para acesso ao banco de dados.
-- **4.5** — O código deve estar organizado em pacotes: entidade, dao, visao e util.
-- **4.6** — O sistema deve rodar em ambiente desktop (Windows, Linux ou macOS).
+RNF001 — Linguagem de Programação
+
+O sistema deve ser desenvolvido em Java.
+
+RNF002 — Banco de Dados
+
+O sistema deve utilizar o MySQL como banco de dados.
+
+RNF003 — Interface Gráfica
+
+A interface gráfica deve ser desenvolvida utilizando Java Swing.
+
+RNF004 — Padrão DAO
+
+O sistema deve utilizar o padrão de projeto DAO para acesso ao banco de dados.
+
+RNF005 — Organização em Pacotes
+
+O código-fonte deve estar organizado nos pacotes:
+
+entidade/modelo;
+dao;
+visao;
+util.
+RNF006 — Ambiente Desktop
+
+O sistema deve executar em ambiente desktop nos sistemas operacionais Windows, Linux e macOS.
