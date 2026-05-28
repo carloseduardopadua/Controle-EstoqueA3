@@ -9,6 +9,7 @@ package visao;
  * @author carlo
  */
 public class FrmMenuPrincipal extends javax.swing.JFrame {
+    private boolean carregou = false;
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmMenuPrincipal.class.getName());
 
@@ -16,9 +17,16 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
      * Creates new form FrmMenuPrincipal
      */
     public FrmMenuPrincipal() {
-    initComponents();
-    this.setLocationRelativeTo(null); 
-}
+        initComponents();
+        this.setLocationRelativeTo(null);
+        
+        // O truque: Pegar o "recheio" (ContentPane) das suas telas atuais!
+        jTabbedPane4.setComponentAt(0, new CadastroProduto().getContentPane());
+        jTabbedPane4.setComponentAt(1, new CadastroCategoria().getContentPane());
+        jTabbedPane4.setComponentAt(2, new TelaMovimentacao().getContentPane());
+        jTabbedPane4.setComponentAt(3, new TelaRelatorios().getContentPane());
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,69 +37,42 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnProdutos = new javax.swing.JButton();
-        btnCategorias = new javax.swing.JButton();
-        btnMovimentacoes = new javax.swing.JButton();
-        btnRelatorios = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jTabbedPane4 = new javax.swing.JTabbedPane();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        btnProdutos.setText("PRODUTOS");
-        btnProdutos.addActionListener(this::btnProdutosActionPerformed);
-
-        btnCategorias.setText("CATEGORIAS");
-        btnCategorias.addActionListener(this::btnCategoriasActionPerformed);
-
-        btnMovimentacoes.setText("MOVIMENTAÇÕES");
-        btnMovimentacoes.addActionListener(this::btnMovimentacoesActionPerformed);
-
-        btnRelatorios.setText("RELATÓRIOS");
-        btnRelatorios.addActionListener(this::btnRelatoriosActionPerformed);
 
         btnSair.setText("SAIR");
         btnSair.addActionListener(this::btnSairActionPerformed);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel1.setText("DADOS DO ESTOQUE");
+        jTabbedPane4.addChangeListener(this::jTabbedPane4StateChanged);
+        jTabbedPane4.addTab("PRODUTOS", filler1);
+        jTabbedPane4.addTab("CATEGORIAS", filler2);
+        jTabbedPane4.addTab("MOVIMENTAÇÕES", filler3);
+        jTabbedPane4.addTab("RELATÓRIOS", filler4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(149, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnCategorias, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnMovimentacoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(141, 141, 141))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 910, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(btnProdutos)
+                .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnCategorias)
-                .addGap(18, 18, 18)
-                .addComponent(btnMovimentacoes)
-                .addGap(18, 18, 18)
-                .addComponent(btnRelatorios)
-                .addGap(30, 30, 30)
                 .addComponent(btnSair)
                 .addGap(17, 17, 17))
         );
@@ -99,29 +80,33 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoriasActionPerformed
-   CadastroCategoria tela = new CadastroCategoria();
-    tela.setVisible(true);     // TODO add your handling code here:
-    }//GEN-LAST:event_btnCategoriasActionPerformed
-
-    private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosActionPerformed
-CadastroProduto tela = new CadastroProduto();
-    tela.setVisible(true);        // TODO add your handling code here:
-    }//GEN-LAST:event_btnProdutosActionPerformed
-
-    private void btnMovimentacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovimentacoesActionPerformed
-   TelaMovimentacao tela = new TelaMovimentacao();
-    tela.setVisible(true);     // TODO add your handling code here:
-    }//GEN-LAST:event_btnMovimentacoesActionPerformed
-
-    private void btnRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatoriosActionPerformed
-   TelaRelatorios tela = new TelaRelatorios();
-    tela.setVisible(true);     // TODO add your handling code here:
-    }//GEN-LAST:event_btnRelatoriosActionPerformed
-
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-     System.exit(0);   // TODO add your handling code here:
+        System.exit(0);   // TODO add your handling code here:
     }//GEN-LAST:event_btnSairActionPerformed
+
+    private void jTabbedPane4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane4StateChanged
+      /* if (!carregou) {
+            return; 
+        }
+
+        int aba = jTabbedPane4.getSelectedIndex();
+
+        switch (aba) {
+            case 0:
+                new CadastroProduto().setVisible(true);
+                break;
+            case 1:
+                new CadastroCategoria().setVisible(true);
+                break;
+            case 2:
+                new TelaMovimentacao().setVisible(true);
+                break;
+            case 3:
+                new TelaRelatorios().setVisible(true);
+                break;
+        }*/
+    
+    }//GEN-LAST:event_jTabbedPane4StateChanged
 
     /**
      * @param args the command line arguments
@@ -149,11 +134,11 @@ CadastroProduto tela = new CadastroProduto();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCategorias;
-    private javax.swing.JButton btnMovimentacoes;
-    private javax.swing.JButton btnProdutos;
-    private javax.swing.JButton btnRelatorios;
     private javax.swing.JButton btnSair;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
+    private javax.swing.Box.Filler filler3;
+    private javax.swing.Box.Filler filler4;
+    private javax.swing.JTabbedPane jTabbedPane4;
     // End of variables declaration//GEN-END:variables
 }
