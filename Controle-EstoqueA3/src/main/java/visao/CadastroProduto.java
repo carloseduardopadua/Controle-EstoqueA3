@@ -73,7 +73,6 @@ public void listarProdutos(){
         btnAlterar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
-        btnVoltar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProdutos = new javax.swing.JTable();
@@ -123,9 +122,6 @@ public void listarProdutos(){
 
         btnLimpar.setText("LIMPAR");
         btnLimpar.addActionListener(this::btnLimparActionPerformed);
-
-        btnVoltar.setText("VOLTAR");
-        btnVoltar.addActionListener(this::btnVoltarActionPerformed);
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel11.setText("CADASTRO DE PRODUTOS:");
@@ -184,9 +180,7 @@ public void listarProdutos(){
                         .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
                         .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(btnVoltar)
-                        .addGap(274, 274, 274))
+                        .addGap(397, 397, 397))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -239,7 +233,6 @@ public void listarProdutos(){
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVoltar)
                     .addComponent(btnLimpar)
                     .addComponent(btnExcluir)
                     .addComponent(btnAlterar)
@@ -340,10 +333,6 @@ btnLimparActionPerformed(evt);
         txtUnidade.setText("");
         txtCategoria.setText("");
     }//GEN-LAST:event_btnLimparActionPerformed
-
-    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-       // TODO add your handling code here:
-    }//GEN-LAST:event_btnVoltarActionPerformed
 private void tblProdutosMouseClicked(java.awt.event.MouseEvent evt) {
 
     txtId.setText(tblProdutos.getValueAt(tblProdutos.getSelectedRow(), 0).toString());
@@ -385,7 +374,6 @@ private void tblProdutosMouseClicked(java.awt.event.MouseEvent evt) {
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;

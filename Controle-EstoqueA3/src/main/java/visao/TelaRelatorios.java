@@ -43,7 +43,6 @@ public class TelaRelatorios extends javax.swing.JFrame {
         btnMaiorMovimentacao = new javax.swing.JButton();
         btnAtualizar = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
-        btnVoltar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblRelatorios = new javax.swing.JTable();
 
@@ -60,7 +59,6 @@ public class TelaRelatorios extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         setName("tblRelatorios"); // NOI18N
 
@@ -84,9 +82,6 @@ public class TelaRelatorios extends javax.swing.JFrame {
 
         btnLimpar.setText("Limpar");
         btnLimpar.addActionListener(this::btnLimparActionPerformed);
-
-        btnVoltar.setText("Voltar");
-        btnVoltar.addActionListener(this::btnVoltarActionPerformed);
 
         tblRelatorios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -116,13 +111,11 @@ public class TelaRelatorios extends javax.swing.JFrame {
                 .addContainerGap(56, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(175, 175, 175)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAtualizar)
                         .addGap(238, 238, 238)
-                        .addComponent(btnLimpar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnVoltar))
+                        .addComponent(btnLimpar))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -141,8 +134,7 @@ public class TelaRelatorios extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLimpar)
-                    .addComponent(btnAtualizar)
-                    .addComponent(btnVoltar))
+                    .addComponent(btnAtualizar))
                 .addGap(41, 41, 41))
         );
 
@@ -233,10 +225,6 @@ ProdutoDAO dao = new ProdutoDAO();
     tblRelatorios.setModel(modeloTabela);// TODO add your handling code here:
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
-    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-    // TODO add your handling code here:
-    }//GEN-LAST:event_btnVoltarActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -270,7 +258,6 @@ ProdutoDAO dao = new ProdutoDAO();
     private javax.swing.JButton btnListasdePreco;
     private javax.swing.JButton btnMaiorMovimentacao;
     private javax.swing.JButton btnProdutosporCategoria;
-    private javax.swing.JButton btnVoltar;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
