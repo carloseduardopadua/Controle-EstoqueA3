@@ -18,10 +18,10 @@ public class Conexao {
     private static final String URL = "jdbc:mysql://localhost:3306/controleestoque";
 
     /** Usuário do banco de dados. */
-    private static final String USUARIO = "root";
+    private static final String USUARIO = "user_estoque";
 
     /** Senha do banco de dados. */
-    private static final String SENHA = "Lucimeire131101";
+    private static final String SENHA = "senha_grupo123";
 
     /**
      * Estabelece e retorna uma conexão com o banco de dados.

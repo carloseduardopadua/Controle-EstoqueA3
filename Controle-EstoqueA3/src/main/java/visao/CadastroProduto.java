@@ -248,20 +248,26 @@ public void listarProdutos(){
     }//GEN-LAST:event_txtIdActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-       Produto p = new Produto();
+      Produto p = new Produto();
 
-        p.setNome(txtNome.getText());
-        p.setPrecoUnitario(Double.parseDouble(txtPreco.getText()));
-        p.setQuantidadeEstoque(Integer.parseInt(txtQuantidade.getText()));
-        p.setQuantidadeMaxima(Integer.parseInt(txtQtdMaxima.getText()));
-        p.setQuantidadeMinima(Integer.parseInt(txtqtdMinima.getText()));
-        p.setUnidade(txtUnidade.getText());
-        p.setCategoria(txtCategoria.getText());
+    p.setNome(txtNome.getText());
+    p.setPrecoUnitario(Double.parseDouble(txtPreco.getText()));
+    p.setQuantidadeEstoque(Integer.parseInt(txtQuantidade.getText()));
+    p.setQuantidadeMaxima(Integer.parseInt(txtQtdMaxima.getText()));
+    p.setQuantidadeMinima(Integer.parseInt(txtqtdMinima.getText()));
+    p.setUnidade(txtUnidade.getText());
+    // Nota: provisoriamente setando o texto da categoria
+    p.setCategoria(txtCategoria.getText()); 
 
-ProdutoDAO dao = new ProdutoDAO();
-dao.cadastrarProduto(p);
+    ProdutoDAO dao = new ProdutoDAO();
+    dao.cadastrarProduto(p);
 
-JOptionPane.showMessageDialog(null, "Produto salvo!");
+    JOptionPane.showMessageDialog(null, "Produto salvo!");
+    
+   
+    listarProdutos();            
+    btnLimparActionPerformed(evt); 
+
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
